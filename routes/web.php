@@ -11,5 +11,6 @@ route::get('/threads/create' , function() {
 });
 
 route::get('/' , function() {
-	return view('messages.hello', ['name' => 'Baldur']);
+	$name = 'Baldur';
+	return view('messages.hello', compact('name'));
 });
