@@ -4,6 +4,10 @@
 	<title></title>
 </head>
 <body>
-	Hello, I'm Baldur.
+	<h1>
+		This is greeting number {{ $id }} with
+		{{ $count }} replies
+
+	</h1>
 </body>
 </html>
