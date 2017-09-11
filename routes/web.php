@@ -15,6 +15,7 @@ route::get('/' , function() {
 	return view('messages.hello', compact('name'));
 });
 
-route::get('/greeting/{id}/{count}' , function($id, $count) {
-	return view('messages.greeting', compact('id', 'count'));
-})->where(['id' => '[0-9]+', 'count' => '[0-9]+']);
+route::get('/greeting/{id}' , function($id) {
+	$a = ["þetta", "verkefni", "er", "rugl", "tregt"];
+	return view('messages.greeting', ['kalli' => $a[$id]]);
+})->where(["id" => "[0-4]"]);
