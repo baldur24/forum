@@ -10,10 +10,7 @@ route::get('/threads/create' , function() {
 	return view('threads.create');
 });
 
-route::get('/' , function() {
-	$name = 'Baldur';
-	return view('messages.hello', compact('name'));
-});
+route::get('/', 'GreetingController@show');
 
 route::get('/greeting/{id}' , function($id) {
 	$a = ["þetta", "verkefni", "er", "rugl", "tregt"];
