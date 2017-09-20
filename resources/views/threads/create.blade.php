@@ -5,33 +5,41 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel panel-default">
-                  <div class="panel-heading">Create a New Thread</div>
-                  <div class="panel-body">
-                        Title:
-                    <div class="input">
-                      <span class="input" id="basic-addon1"></span>
-                      <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
-                    </div>
-                        <br></br>
-                        Body:
-                        <br></br>
-                        <textarea rows="10" cols="95">
-                        </textarea>
-                        <button class="btn btn-primary" type="button">
-                          Publish
-                        </button>
-                        @foreach ($countries as $country)
-                              @if ($country === 'Ísland')
-                                  <h1>{{ $country }}</h1>
-                              @else
-                                  <h3>{{ $country }}</h3>
-                              @endif
-                        @endforeach
-                  </div>
+                <div class="panel-heading">Forum Threads</div>
+
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Title: </label>
+                            <input type="text" name="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Body: </label>
+                            <textarea type="text" name="title" class="form-control" rows="8"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">Publish</button>
+                        </div>
+                    </form>
                 </div>
+                <ul>
+                    @foreach($tasks as $task)
+                        @if( ! $task['complete'] )
+                            <li>
+                                <a href="{{ $task['anchor'] }}">{{ $task['title'] }}</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ $task['anchor'] }}">
+                                    <s>{{ $task['title'] }}</s>
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

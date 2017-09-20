@@ -6,16 +6,17 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Forum Threads</div>
-                    <div class="panel panel-default">
+                    
                         <div class="panel-body">
                         @foreach ($threads as $thread)
-                            <h3>{{ $thread['title'] }}</h3>
+                            <h3>{{ $thread->title }}</h3>
                         <div class='body'>
-                            {{ $thread['body'] }}
+                            {{ $thread->body }}
+                        <hr>
                         @endforeach
                         </div>
                         </div>
-                    </div>
+                            
                 </div>                        
             </div>         
         </div>
