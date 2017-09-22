@@ -11,10 +11,14 @@ class ProfileController extends Controller
     {	
     	$users = DB::select('select * from users');
 
-    	$links = [
+    	$controllerlinks = [
     				['anchor' => 'https://laravel.com/docs/5.5/controllers']
     	];
 
-    	return view('threads.profile', compact('users', 'links', 'anchor'));
+    	$laravellinks = [
+    				['anchor' => 'https://laravel.com/docs/5.5']
+    	];
+
+    	return view('threads.profile', compact('users', 'controllerlinks', 'anchor', 'laravellinks'));
     }
 }
