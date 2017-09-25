@@ -2,9 +2,15 @@
 
 Auth::routes();
 
+route::get('/', function() {
+	return redirect('/threads');
+});
+
 route::get('/threads', 'ThreadsController@index');
 
-route::get('/threads/create', 'ThreadsController@create');
+route::post('/threads', 'ThreadsController@store');
+
+route::get('/threads/create', 'ThreadsController@create')->middleware('auth');
 
 route::get('/threads/{id}', 'ThreadsController@show');
 
