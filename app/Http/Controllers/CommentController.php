@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     public function index() {
-    	return("index");
+    	return "index" ;
     }
     public function show() {
     	return "show";
