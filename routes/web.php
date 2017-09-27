@@ -16,6 +16,11 @@ route::get('/threads/{id}', 'ThreadsController@show');
 
 route::get('/profile/{id}', 'ProfileController@index');
 
+route::get('/comments', 'CommentController@index');
+
+route::get('/comments/3', 'CommentController@show')->middleware('auth');
+
+route::post('/comments', 'CommentController@store')->middleware('auth');
 
 #route::get('/greeting/{id}' , function($id) {
 #	$a = ["þetta", "verkefni", "er", "rugl", "tregt"];
