@@ -8,7 +8,7 @@ use App\Thread;
 
 class ThreadsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {	
         $threads = Thread::all();
 
