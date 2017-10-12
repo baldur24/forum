@@ -6,13 +6,18 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Thread;
-use App\Task;
+use Auth;
 
 class ThreadsController extends Controller
 {
-    public function index(Request $request)
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create', 'store');
+    }
+
+    public function index()
     {	
-        $threads = Thread::all();
+        $threads = Thread::latest()->get();
 
     	return view('threads.index', compact('threads'));
     }
@@ -23,7 +28,6 @@ class ThreadsController extends Controller
     public function show($id)
     {
         $thread = Thread::find($id);
-        #$thread = DB::table('threads')->where('id', $id)->first();
         
         return view('threads.show', compact('thread'));
     }
@@ -43,7 +47,7 @@ class ThreadsController extends Controller
         $thread = new Thread;
         $thread->title = $request->title;
         $thread->body = $request->body;
-        $thread->user_id = 1;
+        $thread->user_id = auth()->id();
         $thread->save();
 
         return redirect('/threads');
