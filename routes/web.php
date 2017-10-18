@@ -14,6 +14,6 @@ route::get('/threads/create', 'ThreadsController@create');
 
 route::get('/threads/{id}', 'ThreadsController@show');
 
-route::post('/threads/{id}', 'CommentController@store');
+route::post('/threads/{id}/comment', 'CommentController@store');
 
 route::get('/profile/{id}', 'ProfileController@index');

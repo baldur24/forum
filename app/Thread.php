@@ -13,4 +13,6 @@ class Thread extends Model
 		Return $this->hasMany('App\Comment');
 	}
 
+	protected $fillable = ['title', 'body', 'user_id'];
+
 }

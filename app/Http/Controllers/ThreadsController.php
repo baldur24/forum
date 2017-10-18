@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Thread;
+use App\Comment;
 use Auth;
 
 class ThreadsController extends Controller
@@ -28,27 +29,24 @@ class ThreadsController extends Controller
     public function show($id)
     {
         $thread = Thread::find($id);
+
+        $comment = Comment::all();
         
-        return view('threads.show', compact('thread'));
+        return view('threads.show', compact('thread', 'comments'));
     }
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'title' => 'required|max:40',
-            'body' => 'required|min:20',
+            'body' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return redirect('/threads/create')
-                ->withInput()
-                ->withErrors($validator);
-        }
 
-        $thread = new Thread;
-        $thread->title = $request->title;
-        $thread->body = $request->body;
-        $thread->user_id = auth()->id();
-        $thread->save();
+        Thread::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'user_id' => auth()->id()
+        ]);
 
         return redirect('/threads');
     }
