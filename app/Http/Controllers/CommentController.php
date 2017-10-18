@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Thread;
 use App\Comment;
+use App\User;
 use Auth;
 
 class CommentController extends Controller

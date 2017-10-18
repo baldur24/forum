@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Thread;
 use App\Comment;
+use App\User;
 use Auth;
 
 class ThreadsController extends Controller
@@ -30,10 +31,13 @@ class ThreadsController extends Controller
     {
         $thread = Thread::find($id);
 
-        $comment = Comment::all();
+        $comments = Comment::all()->sortByDesc("created_at");
+
+        $users = User::all();
         
-        return view('threads.show', compact('thread', 'comments'));
+        return view('threads.show', compact('thread', 'comments', 'users'));
     }
+
     public function store(Request $request)
     {
         $this->validate($request, [

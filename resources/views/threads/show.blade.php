@@ -32,5 +32,30 @@
         </div>
     </div>
 </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Comments</div>
+                    
+                        <div class="panel-body">
+                        @foreach ($comments as $comment)
+                        @foreach ($users as $user)
+                            <h3>
+                            {{ $comment->body }}
+                            </h3>
+                        <div class='body'>
+                            <h4>
+                            {{ $user->name }}
+                            </h4>
+                        <hr>
+                        @endforeach
+                        @endforeach
+                        </div>
+                        </div>              
+                </div>                        
+            </div>         
+        </div>
+    </div>
+</div>
 @endsection
