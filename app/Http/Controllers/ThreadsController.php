@@ -31,7 +31,9 @@ class ThreadsController extends Controller
     {
         $thread = Thread::find($id);
 
-        $comments = Comment::all()->sortByDesc("created_at");
+        #$comments = Comment::all()->sortByDesc("created_at");
+
+        $comments = Comment::where('thread_id', "=", $id)->orderBy('created_at', 'desc')->get();
 
         $users = User::all();
         
